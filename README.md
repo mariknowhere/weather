@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+Используя Next.js (или React) создайте SPA приложение для просмотра погоды в различных городах.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Приложение должно состоять из двух страниц:
+- Главная страница
+    - с указанием текущей погоды и прогноза на ближайшие 3 дня в городе по умолчанию
+    - после загрузки страницы запросите у пользователя его локациию, затем смените город по умолчанию на город пользователя
+    - на странице должны находится 3 кнопки, с помощью которых происходит переключение городов (Минск, Москва, Братислава) с последующей актуализацией страницы
+    - выбранный город должен быть сохранен так, чтобы перезагрузка страницы не сменила его
 
-## Available Scripts
+- Побочная страница
+    - отображающая почасовой (если API позволяет) и 10 дневный прогноз погоды для указанного города
+    - при инициализации, страница берет город из URL (путь может быть, например, таким: {...}/in/Milan)
+    - так же, на странице должно находиться текстовое поле, заполнив которое можно поменять город
 
-In the project directory, you can run:
 
-### `npm start`
+В качестве css framework рекомендуем использовать TailwindCSS. Использование UI библиотек на ваше усмотрение.
+В вашем решении так же должен быть реализован компонент для отображения иконок, который принимает 2 props - name, className. При рендере подставляет нужную SVG иконку. Обратите внимание, что с помощью className должна быть возможность изменить fill / stroke / width / height иконки - т.е. стили от классов должны применяться и на иконку - для этого рекомендуем svg иконку подготовить и удалить ненужные атрибуты. Плюсом будет поддержка кеширования иконок и отображение в SSR в случае использования Next.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ключевые моменты:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Город указывается латинскими буквами, но может быть в случайном регистре
+- Город по умолчанию - Минск, если не была получена геолокация
+- Использование UI библиотек по Вашему усмотрению - большее внимание будем уделять тонкостям реализации, а не внешнему виду
+- Исходный код выложен в git репо (github, gitlab, bitbucket), который должен быть доступен для клонирования
+- Установка и запуск не должны требовать дополнительно установленных библиотек вне NPM
+- Запуск через npm start
+- Проект должен запуститься локально в браузере
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Замечания:
+- Использование сторонних библиотек будет плюсом только в случае, если их использование оправданно и вы сможете объяснить почему выбрали именно их
+- Используйте правильные подходы и пишите код так, как бы вы его писали на работе
+- Комментарии в коде приветствуются
+- Не забывайте про обработку ошибок
